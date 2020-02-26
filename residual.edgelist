@@ -1,0 +1,5 @@
+1 3 {'capacity': 20}
+1 4 {'capacity': 10}
+3 4 {'capacity': 30}
+4 2 {'capacity': 20}
+3 2 {'capacity': 10}
