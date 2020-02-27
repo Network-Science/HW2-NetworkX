@@ -66,7 +66,6 @@ def minCapacity(r, path):
 def modifyResidual(r, path, minFlow):
     for x in range(len(path) - 1):
         r[path[x]][path[x + 1]]['capacity'] -= minFlow
-        # r[path[x + 1]][path[x]]['capacity'] += minFlow
     return r
 
 
