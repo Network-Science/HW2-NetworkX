@@ -159,7 +159,6 @@ def testCase(node, edge):
     endFF_Dijkstra = time.time()
     print("Time performance on Ford Fulkerson FFdijk",
           endFF_Dijkstra-startFF_Dijkstra)
-    # print(BFS, Dijkstra, flow.maximum_flow_value(testGraph, 0, node-1))
 
 
 print("\nTest case 1")
