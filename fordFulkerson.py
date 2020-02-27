@@ -1,6 +1,9 @@
+import networkx.generators.random_graphs as generators
+import time
 import networkx as nx
 import networkx.readwrite.edgelist as edgelist
 import networkx.algorithms.shortest_paths.weighted as weighted
+import networkx.algorithms.flow as flow
 from collections import deque
 
 
@@ -123,6 +126,39 @@ def Explore(G, u, v):
     return []
 
 
-mygraph = edgelist.read_edgelist("MaxFlow.edgelist", create_using=nx.DiGraph)
+print("\n Test case 1")
+mygraph = edgelist.read_edgelist("MaxFlow1.edgelist", create_using=nx.DiGraph)
 print('Ford Fulkerson with BFS', FordFulkersonBFS(mygraph, '0', '5'))
 print("Ford Fulkerson with Dijkstra", FordFulkersonDijkstra(mygraph, '0', '5'))
+print("max flow from library",
+      flow.maximum_flow_value(mygraph, '0', '5'))
+
+print("\n Test case 2")
+mygraph = edgelist.read_edgelist("MaxFlow2.edgelist", create_using=nx.DiGraph)
+print('Ford Fulkerson with BFS', FordFulkersonBFS(mygraph, '0', '5'))
+print("Ford Fulkerson with Dijkstra", FordFulkersonDijkstra(mygraph, '0', '5'))
+print("max flow from library",
+      flow.maximum_flow_value(mygraph, '0', '5'))
+
+print("\n Test case 3")
+mygraph = edgelist.read_edgelist("MaxFlow3.edgelist", create_using=nx.DiGraph)
+print('Ford Fulkerson with BFS', FordFulkersonBFS(mygraph, '1', '4'))
+print("Ford Fulkerson with Dijkstra", FordFulkersonDijkstra(mygraph, '1', '4'))
+print("max flow from library",
+      flow.maximum_flow_value(mygraph, '1', '4'))
+
+
+testGraph = generators.gnm_random_graph(100, 300, directed=True)
+
+startFFBFS = time.time()
+
+
+endFFBFS = time.time()
+
+print("Time performance on Ford Fulkerson BFS", startFFBFS-endFFBFS)
+
+startFFDijk = time.time()
+
+endFFDijk = time.time()
+
+print(end-start)
