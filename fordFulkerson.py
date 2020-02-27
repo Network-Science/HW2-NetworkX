@@ -148,17 +148,25 @@ print("max flow from library",
       flow.maximum_flow_value(mygraph, '1', '4'))
 
 
-testGraph = generators.gnm_random_graph(100, 300, directed=True)
+def testCase(node, edge):
+    testGraph = generators.gnm_random_graph(node, edge, directed=True)
+    startFF_BFS = time.time()
+    BFS = FordFulkersonBFS(testGraph, 0, node-1)
+    endFF_BFS = time.time()
+    print("Time performance on Ford Fulkerson BFS", endFF_BFS-startFF_BFS)
+    startFF_Dijkstra = time.time()
+    Dijkstra = FordFulkersonDijkstra(testGraph, 0, node-1)
+    endFF_Dijkstra = time.time()
+    print("Time performance on Ford Fulkerson FFdijk",
+          endFF_Dijkstra-startFF_Dijkstra)
+    # print(BFS, Dijkstra, flow.maximum_flow_value(testGraph, 0, node-1))
 
-startFFBFS = time.time()
 
+print("\nTest case 1")
+testCase(100, 300)
 
-endFFBFS = time.time()
+print("\nTest case 2")
+testCase(1000, 5000)
 
-print("Time performance on Ford Fulkerson BFS", startFFBFS-endFFBFS)
-
-startFFDijk = time.time()
-
-endFFDijk = time.time()
-
-print(end-start)
+print("\nTest case 3")
+testCase(5000, 8000)
